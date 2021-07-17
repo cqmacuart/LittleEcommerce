@@ -1,0 +1,96 @@
+@font-face {
+    font-family: "Sacramento";
+    src: url("../webfonts/Sacramento-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+main {
+    min-height: 100vh;
+}
+
+.navigation {
+    white-space: nowrap;
+    overflow: auto;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.navigation li {
+    display: inline-block;
+}
+
+/* searchbar */
+.searchbar {
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 34px;
+    background-color: #ccc;
+    border-radius: 30px;
+    padding: 2px;
+}
+
+.search_input {
+    color: rgb(65, 65, 65);
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color: transparent;
+    line-height: 30px;
+    transition: width 0.4s linear;
+}
+
+.search_input_active {
+    padding: 0 10px;
+    width: 200px;
+    caret-color: red;
+    transition: width 0.4s linear;
+}
+
+.search_icon_active,
+.search_icon:hover {
+    text-decoration: none;
+    background: white;
+    color: #e74c3c !important;
+}
+
+.search_icon {
+    height: 30px;
+    width: 30px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+}
+
+/* .admin-title {
+    font-family: "Sacramento";
+} */
+
+/* templates transition effects */
+.slide-fade-enter {
+    transform: translateX(10px);
+    opacity: 0;
+}
+.slide-fade-leave-to {
+    transform: translateX(-10px);
+    opacity: 0;
+}
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+    transition: all 0.2s ease-in;
+}
+
+.payment-image {
+    max-height: 40px;
+}
+
+.copyright,
+.copyright:hover {
+    text-decoration: none;
+    color: unset;
+}
