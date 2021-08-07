@@ -582,7 +582,6 @@ export default {
     getAdvanced() {
       axios.get(`/admin/settings/getadvancedsettings`).then((response) => {
         if (response.status == 200) {
-          console.log(response);
           this.shopSettings.catalogueMode =
             response.data[0].value == 1 ? true : false;
         }
