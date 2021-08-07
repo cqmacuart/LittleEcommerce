@@ -10,6 +10,7 @@ use App\Order;
 use App\OrderDetail;
 use App\OrderState;
 use App\Product;
+use App\Transaction;
 
 class OrdersController extends Controller
 {
@@ -81,6 +82,13 @@ class OrdersController extends Controller
     public function pedidoyappy($token)
     {
         $order = \App\Order::where("transaccion", $token)->addSelect(['estado' => OrderState::select('descripcion')->whereColumn('id', 'orders.orderstate_id')])->get();
+        $tranUpdate = \App\Transaction::where("id_transaccion", $token)->first();
+        if ($tranUpdate) {
+            $tranUpdate->status = 1;
+            $tranUpdate->error = "00";
+            $tranUpdate->respuesta_text = "Pago Exitoso con Yappy";
+            $tranUpdate->update();
+        }
         if (sizeof($order) > 0) {
             $details = \App\OrderDetail::where("order_id", $order[0]->id)->get();
             $customer = \App\Customer::where('order_pedido', $order[0]->pedido)->get();
