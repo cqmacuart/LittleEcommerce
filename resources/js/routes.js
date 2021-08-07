@@ -91,6 +91,21 @@ export default new Router({
                 requiresAuth: true
             }
         },
+        // Yappy Response
+        {
+            path: "/yappy/response/:orden?",
+            name: "yappy.response",
+            props: true,
+            component: require("./components/modules/payment/yappy/response")
+                .default,
+        },
+        {
+            path: "/yappy/error/",
+            name: "yappy.error",
+            props: true,
+            component: require("./components/modules/payment/yappy/error")
+                .default,
+        },
         // Login Page
         {
             path: "/admin/login",

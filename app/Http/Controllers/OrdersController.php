@@ -78,6 +78,17 @@ class OrdersController extends Controller
             return response()->json("Not Found", 204);
         }
     }
+    public function pedidoyappy($token)
+    {
+        $order = \App\Order::where("transaccion", $token)->addSelect(['estado' => OrderState::select('descripcion')->whereColumn('id', 'orders.orderstate_id')])->get();
+        if (sizeof($order) > 0) {
+            $details = \App\OrderDetail::where("order_id", $order[0]->id)->get();
+            $customer = \App\Customer::where('order_pedido', $order[0]->pedido)->get();
+            return response()->json(["order" => $order, "details" => $details, "customer" => $customer], 200);
+        } else {
+            return response()->json("Not Found", 204);
+        }
+    }
 
     /**
      * Show the form for creating a new resource.

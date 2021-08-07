@@ -1,16 +1,7 @@
 <template>
-  <div
-    :style="customStyle"
-    id="categoryBox"
-    v-loading.fullscreen.lock="fullscreenLoading"
-  >
+  <div :style="customStyle" id="categoryBox" v-loading.fullscreen.lock="fullscreenLoading">
     <section class="col-12 p-0 m-0 text-center">
-      <img
-        :src="`/img/categories/${categoryImage}`"
-        alt
-        class="img-fluid"
-        v-if="categoryImage"
-      />
+      <img :src="`/img/categories/${categoryImage}`" alt class="img-fluid" v-if="categoryImage" />
       <div v-else class="p-3">
         <span class="fas fa-5x fa-spin fa-spinner"></span>
       </div>
@@ -21,7 +12,9 @@
         class="font-weight-bolder customer-title custom-category-style py-2"
         v-text="categoryName"
       ></h5>
-      <h5 v-else><i class="el-icon-loading"></i></h5>
+      <h5 v-else>
+        <i class="el-icon-loading"></i>
+      </h5>
     </div>
     <section class="container-md p-0 p-sm-3 col-12 d-flex flex-wrap">
       <div
@@ -44,20 +37,15 @@
               </a>
             </div>
             <div v-if="product.flag" class="col-12 p-2 p-lg-3 mt-4 mt-lg-2">
-              <span
-                v-if="fillColors.ok"
-                class="fas fa-shopping-bag fa-2x custom-addicon-style"
-              ></span>
-              <small v-else><i class="el-icon-loading"></i></small>
+              <span v-if="fillColors.ok" class="fas fa-shopping-bag fa-2x custom-addicon-style"></span>
+              <small v-else>
+                <i class="el-icon-loading"></i>
+              </small>
             </div>
           </div>
           <div class="row no-gutters h-100">
-            <div
-              class="col-md-4 d-flex align-items-center text-center overflow-hidden"
-            >
-              <router-link
-                :to="{ name: 'producto', params: { id: product.value } }"
-              >
+            <div class="col-md-4 d-flex align-items-center text-center overflow-hidden">
+              <router-link :to="{ name: 'producto', params: { id: product.value } }">
                 <img
                   :src="`/img/products/${product.image}`"
                   alt
@@ -72,10 +60,7 @@
                   :to="{ name: 'producto', params: { id: product.value } }"
                   style="text-decoration: none; color: unset"
                 >
-                  <h5
-                    v-text="product.label"
-                    class="overflow-hidden text-nowrap"
-                  ></h5>
+                  <h5 v-text="product.label" class="overflow-hidden text-nowrap"></h5>
                 </router-link>
               </div>
               <div class="card-body p-0 p-md-3">
@@ -86,17 +71,17 @@
                   v-if="!shopSettings.catalogueMode && !product.quote"
                   class="card-text p-0 text-right"
                 >
-                  <small
-                    class="text-muted custom-price-style"
-                    v-if="fillColors.ok"
-                    >{{ currency }}
-                    {{ product.price | numeral("0,0.00") }}</small
-                  >
-                  <small v-else><i class="el-icon-loading"></i></small>
+                  <small class="text-muted custom-price-style" v-if="fillColors.ok">
+                    {{ currency }}
+                    {{ product.price | numeral("0,0.00") }}
+                  </small>
+                  <small v-else>
+                    <i class="el-icon-loading"></i>
+                  </small>
                 </p>
                 <p v-else class="card-text p-0 text-center">
                   <a
-                    href=""
+                    href
                     @click.prevent="askforit(product.value)"
                     class="btn btn-success rounded-pill mt-4"
                     :class="
@@ -106,9 +91,7 @@
                     "
                   >
                     <span class="fab fa-whatsapp"></span>
-                    <span v-if="product.quote && !shopSettings.catalogueMode"
-                      >Consultar</span
-                    >
+                    <span v-if="product.quote && !shopSettings.catalogueMode">Consultar</span>
                   </a>
                 </p>
               </div>
@@ -116,15 +99,8 @@
                 class="card-footer bg-transparent text-nowrap"
                 v-if="!shopSettings.catalogueMode && !product.quote"
               >
-                <a
-                  class="link p-2 remove-to-cart"
-                  @click.prevent="substo(product.value)"
-                >
-                  <el-button
-                    icon="el-icon-minus"
-                    circle
-                    :class="'shadow-sm'"
-                  ></el-button>
+                <a class="link p-2 remove-to-cart" @click.prevent="substo(product.value)">
+                  <el-button icon="el-icon-minus" circle :class="'shadow-sm'"></el-button>
                 </a>
                 <input
                   type="number"
@@ -133,15 +109,8 @@
                   :value="product.qty"
                   readonly
                 />
-                <a
-                  class="link p-2 add-to-cart"
-                  @click.prevent="addto(product.value)"
-                >
-                  <el-button
-                    icon="el-icon-plus"
-                    circle
-                    :class="'shadow-sm'"
-                  ></el-button>
+                <a class="link p-2 add-to-cart" @click.prevent="addto(product.value)">
+                  <el-button icon="el-icon-plus" circle :class="'shadow-sm'"></el-button>
                   <!-- <span class="fas fa-plus text-muted"></span> -->
                 </a>
               </div>
@@ -160,8 +129,7 @@
               tabindex="-1"
               aria-disabled="true"
               @click.prevent="prevPage"
-              >Previous</a
-            >
+            >Previous</a>
           </li>
           <li
             class="page-item"
@@ -169,9 +137,11 @@
             :key="index"
             :class="page == pageNumber ? ' active' : ''"
           >
-            <a class="page-link" href="#" @click.prevent="selectPage(page)">{{
+            <a class="page-link" href="#" @click.prevent="selectPage(page)">
+              {{
               page + 1
-            }}</a>
+              }}
+            </a>
           </li>
           <li class="page-item" v-if="pageNumber < pageCount - 1">
             <a class="page-link" href="#" @click.prevent="nextPage">Next</a>
@@ -612,6 +582,7 @@ export default {
     getAdvanced() {
       axios.get(`/admin/settings/getadvancedsettings`).then((response) => {
         if (response.status == 200) {
+          console.log(response);
           this.shopSettings.catalogueMode =
             response.data[0].value == 1 ? true : false;
         }

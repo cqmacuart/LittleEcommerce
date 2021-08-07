@@ -1,0 +1,5 @@
+var YappyCheckout = {
+    COLOR_DEL_BOTON: "brand",
+    DONACION: false,
+    ACTIVAR: true // LA OPCION ACTIVAR ESTA POR DEFECTO, NO SE NECESITA COLOCARLE EL VALOR DE true
+}

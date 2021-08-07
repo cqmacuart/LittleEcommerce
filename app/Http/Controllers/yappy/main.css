@@ -1,0 +1,23 @@
+:root {
+    --blush: #FFF4F5;
+    --ruby: #D0021B;
+    --smoothie: #FFF5E1;
+    --orange: #FF7900;
+}
+
+.invalid, .alert {
+    padding: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 4px;
+}
+
+.invalid {
+    color: var(--ruby);
+    background-color: var(--blush);
+}
+
+.alert {
+    color: var(--orange);
+    background-color: var(--smoothie);
+}

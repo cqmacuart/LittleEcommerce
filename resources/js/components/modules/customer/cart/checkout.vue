@@ -1,31 +1,26 @@
 <template>
   <div v-if="ok" :style="customStyle">
     <div class="col-12 pt-2 pb-1 text-center border-bottom">
-      <h5
-        v-if="fillColors.ok"
-        class="font-weight-bolder customer-title custom-checkout-style"
-      >
+      <h5 v-if="fillColors.ok" class="font-weight-bolder customer-title custom-checkout-style">
         Confirmar Pedido
         <span class="fas fa-check-circle fa-2x custom-checkout-style"></span>
       </h5>
-      <h5 v-else><i class="el-icon-loading"></i></h5>
+      <h5 v-else>
+        <i class="el-icon-loading"></i>
+      </h5>
     </div>
     <div class="col-12 m-auto p-0 d-flex flex-col flex-sm-row row">
       <section class="container-md p-0 p-sm-3 col-12 col-sm-6">
         <div class="col-12 p-0 bg-white h-100">
           <table class="table table-bordered m-0">
             <caption>
-              <small
-                >Complete los campos obligatorios (<span class="text-danger"
-                  >*</span
-                >) para realizar su pedido.</small
-              >
+              <small>
+                Complete los campos obligatorios (
+                <span class="text-danger">*</span>) para realizar su pedido.
+              </small>
             </caption>
             <tr>
-              <th
-                class="bg-secondary font-weight-bolder text-white align-middle"
-                style="width: 1%"
-              >
+              <th class="bg-secondary font-weight-bolder text-white align-middle" style="width: 1%">
                 <span>*</span>
                 Nombre
               </th>
@@ -40,9 +35,7 @@
               </td>
             </tr>
             <tr>
-              <th
-                class="bg-secondary font-weight-bolder text-white align-middle"
-              >
+              <th class="bg-secondary font-weight-bolder text-white align-middle">
                 <span>*</span>
                 Ciudad
               </th>
@@ -57,9 +50,7 @@
               </td>
             </tr>
             <tr>
-              <th
-                class="bg-secondary font-weight-bolder text-white align-middle"
-              >
+              <th class="bg-secondary font-weight-bolder text-white align-middle">
                 <span>*</span>
                 Dirección
               </th>
@@ -74,9 +65,7 @@
               </td>
             </tr>
             <tr>
-              <th
-                class="bg-secondary font-weight-bolder text-white align-middle"
-              >
+              <th class="bg-secondary font-weight-bolder text-white align-middle">
                 <span>*</span>
                 Celular
               </th>
@@ -90,9 +79,7 @@
               </td>
             </tr>
             <tr>
-              <th
-                class="bg-secondary font-weight-bolder text-white align-middle"
-              >
+              <th class="bg-secondary font-weight-bolder text-white align-middle">
                 <span>*</span>
                 Email
               </th>
@@ -107,11 +94,7 @@
               </td>
             </tr>
             <tr>
-              <th
-                class="bg-secondary font-weight-bolder text-white align-middle"
-              >
-                Comentarios
-              </th>
+              <th class="bg-secondary font-weight-bolder text-white align-middle">Comentarios</th>
               <td>
                 <el-input
                   placeholder="Comentarios adicionales (opcional)"
@@ -124,23 +107,15 @@
             <tr>
               <th
                 class="bg-secondary font-weight-bolder text-white align-middle"
-              >
-                Recibir Notificación
-              </th>
+              >Recibir Notificación</th>
               <td class="align-middle">
-                <el-switch
-                  v-model="notificacion"
-                  active-text="Si"
-                  inactive-text="No"
-                ></el-switch>
+                <el-switch v-model="notificacion" active-text="Si" inactive-text="No"></el-switch>
               </td>
             </tr>
           </table>
         </div>
       </section>
-      <section
-        class="container-md p-0 p-sm-3 col-12 col-sm-6 pb-3 clearfix mt-2 mt-sm-0"
-      >
+      <section class="container-md p-0 p-sm-3 col-12 col-sm-6 pb-3 clearfix mt-2 mt-sm-0">
         <div class="col-12 p-0 bg-white h-100">
           <table class="table table-bordered m-0">
             <caption class="pl-3 text-muted">
@@ -149,17 +124,16 @@
             <tr>
               <th class="totalize text-black" style="width: 1%">Artículos</th>
               <td class="text-right">
-                <router-link :to="{ name: 'cart' }" class="totalize"
-                  >{{ totalItems }} Artículo(s)</router-link
-                >
+                <router-link :to="{ name: 'cart' }" class="totalize">{{ totalItems }} Artículo(s)</router-link>
               </td>
             </tr>
             <tr>
               <th class="totalize text-black">Total</th>
               <td class="text-right">
-                <label class="totalize custom-price-style" for
-                  >{{ currency }} {{ totalAmount | numeral("0,0.00") }}</label
-                >
+                <label
+                  class="totalize custom-price-style"
+                  for
+                >{{ currency }} {{ totalAmount | numeral("0,0.00") }}</label>
               </td>
             </tr>
           </table>
@@ -169,7 +143,7 @@
             v-loading.fullscreen.lock="fullscreenLoading"
           >
             Pedir
-          </button> -->
+          </button>-->
 
           <!-- VALIDAR DATOS PRIMERO -->
           <div v-if="validate()">
@@ -177,7 +151,7 @@
             <div v-if="cod_params.cod_param_1" class="mb-3">
               <div class="accordion" id="accordionExample">
                 <div class="card border-0">
-                  <div class="" id="headingOne">
+                  <div class id="headingOne">
                     <div class="text-center">
                       <img
                         src="/img/payment/cod/codbutton.png"
@@ -206,28 +180,21 @@
                           v-if="!cod_params.cod_param_2"
                           class="d-flex m-0 align-items-center px-2 pb-3 pb-sm-0"
                         >
-                          <img
-                            src="/img/payment/cod/cash_disable.png"
-                            v-if="cod_params.cod_choose"
-                          />
+                          <img src="/img/payment/cod/cash_disable.png" v-if="cod_params.cod_choose" />
                           <img src="/img/payment/cod/cash.png" v-else />
                           <el-switch
                             style="display: block; visibility: hidden"
                             v-model="cod_params.cod_choose"
                             active-color="#13ce66"
                             inactive-color="#ff4949"
-                          >
-                          </el-switch>
+                          ></el-switch>
                           <img
                             src="/img/payment/cod/dataphone_disable.png"
                             v-if="!cod_params.cod_choose"
                           />
                           <img src="/img/payment/cod/dataphone.png" v-else />
                         </label>
-                        <label
-                          v-else
-                          class="d-flex m-0 align-items-center px-2 pb-3 pb-sm-0"
-                        >
+                        <label v-else class="d-flex m-0 align-items-center px-2 pb-3 pb-sm-0">
                           <img src="/img/payment/cod/cash.png" />
                         </label>
                         <button
@@ -243,8 +210,8 @@
                 </div>
               </div>
             </div>
-
             <!--COD END -->
+
             <!--VERIFICAR EPAYCO -->
             <div
               v-if="
@@ -272,12 +239,25 @@
               </div>
             </div>
             <!-- Paguelofacil END -->
+            <!--VERIFICAR YAPPY -->
+            <div class="text-center mb-3" v-if="yappy_params.param_5">
+              <img
+                v-if="!yappy_params.loading"
+                src="/img/payment/yappy/yappy-on.png"
+                class="yappy-button"
+                @click="yappyVerify()"
+              />
+              <div v-else>
+                <i class="fas fa-spinner fa-spin"></i>
+              </div>
+            </div>
+            <!-- YAPPY END -->
           </div>
           <div v-else class="text-center">
-            <small class="text-danger"
-              >Complete los datos obligatorios para desplegar medios de
-              pago</small
-            >
+            <small class="text-danger">
+              Complete los datos obligatorios para desplegar medios de
+              pago
+            </small>
             <div>
               <div class="text-center mb-3" v-if="cod_params.cod_param_1">
                 <img src="/img/payment/cod/codbutton_disable.png" />
@@ -298,6 +278,9 @@
                 "
               >
                 <img src="/img/payment/paguelofacil/paguelofacil_off.png" />
+              </div>
+              <div class="text-center mb-3" v-if="yappy_params.param_5">
+                <img src="/img/payment/yappy/yappy-off.png" />
               </div>
             </div>
           </div>
@@ -370,6 +353,14 @@ export default {
         paguelofacil_param_11: this.notificacion,
         paguelofacil_existed: false,
       },
+      yappy_params: {
+        loading: false,
+        param_1: "", //IDCOMERCIO
+        param_2: "", //CLAVE
+        param_3: "", //DOMINIO
+        param_4: false, //PRODUCCION/PRUEBAS
+        param_5: false, //Enabled/Disabled
+      },
     };
   },
   mounted() {
@@ -380,6 +371,7 @@ export default {
     this.getCod();
     this.getEpayco();
     this.getPaguelofacil();
+    this.getyappy();
   },
   computed: {
     csrf() {
@@ -595,6 +587,84 @@ export default {
       });
       this.fullscreenLoading = false;
     },
+    getyappy() {
+      axios.get(`/admin/yappy`).then((response) => {
+        if (response.status == 200) {
+          this.yappy_params.param_1 = response.data[0].value;
+          this.yappy_params.param_2 = response.data[1].value;
+          this.yappy_params.param_3 = response.data[2].value;
+          this.yappy_params.param_4 =
+            response.data[3].value == 1 ? true : false;
+          this.yappy_params.param_5 =
+            response.data[4].value == 1 ? true : false;
+        }
+      });
+      this.fullscreenLoading = false;
+    },
+    yappyVerify() {
+      this.yappy_params.loading = true;
+      const params = {
+        param_1: this.yappy_params.param_1,
+        param_2: this.yappy_params.param_2,
+        param_3: this.yappy_params.param_3,
+        param_4: this.yappy_params.param_4,
+        param_5: this.yappy_params.param_5,
+        sumary: {
+          total_price: this.totalAmount,
+          total_price_without_tax: this.totalAmount,
+          total_tax: 0,
+          total_discounts: 0,
+          total_shipping: 0,
+          phone: this.celular,
+        },
+      };
+      axios.post(`/admin/yappy/Verify`, params).then((response) => {
+        if (response.data.result === true) {
+          this.setYappyOrder(response.data.url, response.data.ref);
+        } else {
+          this.$toastr.error(response.data.result);
+        }
+        this.yappy_params.loading = false;
+      });
+    },
+    setYappyOrder(url, ref) {
+      this.fullscreenLoading = true;
+      const params = {
+        nombre: this.nombre,
+        ciudad: this.ciudad,
+        direccion: this.direccion,
+        celular: this.celular,
+        email: this.email,
+        comentario: this.comentario,
+        notificacion: this.notificacion,
+        //   datos de transacción
+        referencia: ref,
+        fecha: new Date(),
+        respuesta: "PENDIENTE POR PAGAR",
+        motivo: "Realizado con YAPPY",
+        banco: "Banco General",
+        recibo: null,
+        total: this.totalAmount,
+        moneda: "USD",
+        //Datos adicionales de transaccion
+        type_payment: "YAPPY",
+        cod_transaction_state: 1,
+        errorcode: "00",
+        cust_id_cliente: null,
+        id_factura: null,
+        franchise: null,
+        cardnumber: null,
+        customer_ip: null,
+        medio: "yappy",
+      };
+      axios.post("/orders", params).then((response) => {
+        if (response.status == 200) {
+          window.location = url;
+        } else {
+          this.fullscreenLoading = false;
+        }
+      });
+    },
     trimCelphone() {
       let pattern = new RegExp(/^[^a-zA-Z\W][0-9]*\d$/);
       if (!pattern.test(this.celular)) {
@@ -613,6 +683,7 @@ export default {
         );
       }
     },
+
     setCod() {
       this.fullscreenLoading = true;
       const params = {
@@ -667,5 +738,10 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.yappy-button {
+  &:hover {
+    cursor: pointer;
+  }
+}
 </style>

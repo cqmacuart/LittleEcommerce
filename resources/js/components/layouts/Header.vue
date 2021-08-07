@@ -1,16 +1,15 @@
 <template>
   <div :style="headerStyle" v-if="fillColors.ok">
-    <div
-      class="d-none bg-light col-12 d-sm-flex justify-content-around px-0 custom-header-style"
-    >
+    <div class="d-none bg-light col-12 d-sm-flex justify-content-around px-0 custom-header-style">
       <label for class="m-1">
         <span class="fab fa-whatsapp"></span>
         <a href="#" class="badge badge-success">{{ mobile }}</a>
       </label>
-      <label for="" class="m-1"
-        ><a :href="`${ruta}/admin`" class="text-dark custom-movile-style"
-          ><span class="fas fa-mobile-alt"></span></a
-      ></label>
+      <label for class="m-1">
+        <a :href="`${ruta}/admin`" class="text-dark custom-movile-style">
+          <span class="fas fa-mobile-alt"></span>
+        </a>
+      </label>
       <label for class="m-1">
         <span class="fas fa-map-marker-alt"></span>
         {{ city }},{{ country }}
@@ -23,11 +22,11 @@
       <div class="d-inline p-2">
         <a :href="'/'">
           <img
-            :src="`/img/settings/${image}`"
-            width="90px"
-            :alt="storename"
-            class="img-fluid"
             v-if="image"
+            :src="`/img/settings/${image}`"
+            :alt="storename"
+            width="90px"
+            class="img-fluid"
           />
         </a>
       </div>
@@ -73,7 +72,7 @@
               />
               <!-- <a href="#" class="search_icon search_icon_active">
                 <i class="fas fa-search"></i>
-              </a> -->
+              </a>-->
             </div>
           </div>
         </div>
@@ -81,7 +80,9 @@
     </nav>
   </div>
   <div v-else>
-    <h5 class="text-center"><i class="el-icon-loading"></i></h5>
+    <h5 class="text-center">
+      <i class="el-icon-loading"></i>
+    </h5>
   </div>
 </template>
 

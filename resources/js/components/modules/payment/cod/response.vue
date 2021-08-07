@@ -6,11 +6,10 @@
         class="font-weight-bolder customer-title custom-category-style py-2"
         v-text="'Respuesta de Transacción'"
       ></h5>
-      <h5 v-else><i class="el-icon-loading"></i></h5>
-      <small
-        class="text-muted py-2"
-        v-text="`Referencia de pago: ${cod_ref}`"
-      ></small>
+      <h5 v-else>
+        <i class="el-icon-loading"></i>
+      </h5>
+      <small class="text-muted py-2" v-text="`Referencia de pago: ${cod_ref}`"></small>
     </div>
     <div class="table-responsive col-10 col-sm-8 col-md-6 m-auto">
       <table class="table" v-if="orderHeader.length > 0">
@@ -47,7 +46,7 @@
         </tr>
       </table>
       <div class="text-center">
-        <a :href="ruta" class="btn btn-success"> CONTINUAR. </a>
+        <a :href="ruta" class="btn btn-success">CONTINUAR.</a>
       </div>
     </div>
     <section class="container-md p-0 p-sm-3 col-12 d-flex flex-wrap"></section>

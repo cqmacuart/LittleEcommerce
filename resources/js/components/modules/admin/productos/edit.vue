@@ -4,9 +4,7 @@
       <h2 class="m-0 admin-title">Modificar Producto</h2>
       <hr class="mt-0" />
       <!-- Form -->
-      <section
-        class="col-12 d-flex row flex-column flex-sm-row m-auto px-0 px-sm-2"
-      >
+      <section class="col-12 d-flex row flex-column flex-sm-row m-auto px-0 px-sm-2">
         <div class="col-12 col-md-4 text-center position-relative">
           <img
             :src="`/img/products/${fillProducts.productImageName}`"
@@ -18,10 +16,7 @@
             class="position-absolute delete-icon-box"
             v-if="fillProducts.productImageName != 'nofound.png'"
           >
-            <button
-              class="btn btn-danger text-white rounded-circle border"
-              @click="clearImage"
-            >
+            <button class="btn btn-danger text-white rounded-circle border" @click="clearImage">
               <i class="fas fa-trash"></i>
             </button>
           </div>
@@ -34,7 +29,10 @@
                   class="d-none d-sm-table-cell text-nowrap text-left align-bottom align-sm-middle border-top-0"
                   style="width: 1%"
                 >
-                  <b>(<span class="text-danger">*</span>)</b>
+                  <b>
+                    (
+                    <span class="text-danger">*</span>)
+                  </b>
                   Nombre:
                 </th>
                 <td class="border-top-0">
@@ -48,10 +46,11 @@
                 </td>
               </tr>
               <tr class="text-left">
-                <th
-                  class="d-none d-sm-table-cell align-bottom align-sm-middle text-nowrap"
-                >
-                  <b>(<span class="text-danger">*</span>)</b>
+                <th class="d-none d-sm-table-cell align-bottom align-sm-middle text-nowrap">
+                  <b>
+                    (
+                    <span class="text-danger">*</span>)
+                  </b>
                   Descripción Corta:
                 </th>
                 <td>
@@ -68,9 +67,7 @@
               <tr class="text-left">
                 <th
                   class="d-none d-sm-table-cell align-bottom align-sm-middle text-nowrap"
-                >
-                  Descripción Larga:
-                </th>
+                >Descripción Larga:</th>
                 <td>
                   <textarea
                     name="long_des"
@@ -84,7 +81,10 @@
               </tr>
               <tr class="text-left">
                 <th class="d-none d-sm-table-cell align-bottom align-sm-middle">
-                  <b>(<span class="text-danger">*</span>)</b>
+                  <b>
+                    (
+                    <span class="text-danger">*</span>)
+                  </b>
                   Categoría:
                 </th>
                 <td>
@@ -97,24 +97,16 @@
                     <option selected disabled value>
                       <small class="text-muted">Elija una categoría</small>
                     </option>
-                    <option
-                      v-for="(cat, index) in catList"
-                      :key="index"
-                      :value="cat.value"
-                    >
+                    <option v-for="(cat, index) in catList" :key="index" :value="cat.value">
                       <small class="text-muted" v-text="cat.label"></small>
                     </option>
                   </select>
                 </td>
               </tr>
               <tr class="text-left">
-                <th class="d-none d-sm-table-cell align-bottom align-sm-middle">
-                  Posición:
-                </th>
+                <th class="d-none d-sm-table-cell align-bottom align-sm-middle">Posición:</th>
                 <td>
-                  <label for class="form-label d-sm-none text-muted ml-2"
-                    >Posición:</label
-                  >
+                  <label for class="form-label d-sm-none text-muted ml-2">Posición:</label>
                   <el-input-number
                     v-model="fillProducts.productPosition"
                     controls-position="right"
@@ -126,13 +118,9 @@
                 </td>
               </tr>
               <tr class="text-left">
-                <th class="d-none d-sm-table-cell align-bottom align-sm-middle">
-                  Precio:
-                </th>
+                <th class="d-none d-sm-table-cell align-bottom align-sm-middle">Precio:</th>
                 <td>
-                  <label for class="form-label d-sm-none text-muted ml-2"
-                    >Precio:</label
-                  >
+                  <label for class="form-label d-sm-none text-muted ml-2">Precio:</label>
                   <vue-numeric
                     class="form-control form-control-sm text-right"
                     :precision="2"
@@ -144,13 +132,9 @@
                 </td>
               </tr>
               <tr class="text-left">
-                <th class="d-none d-sm-table-cell align-bottom align-sm-middle">
-                  Inventario:
-                </th>
+                <th class="d-none d-sm-table-cell align-bottom align-sm-middle">Inventario:</th>
                 <td>
-                  <label for class="form-label d-sm-none text-muted ml-2"
-                    >Inventario:</label
-                  >
+                  <label for class="form-label d-sm-none text-muted ml-2">Inventario:</label>
                   <el-input-number
                     v-model="fillProducts.productQuantity"
                     :min="0"
@@ -166,9 +150,7 @@
                 </td>
               </tr>
               <tr class="text-left">
-                <th class="d-none d-sm-table-cell align-bottom align-sm-middle">
-                  Estado:
-                </th>
+                <th class="d-none d-sm-table-cell align-bottom align-sm-middle">Estado:</th>
                 <td>
                   <select
                     name="status"
@@ -179,11 +161,7 @@
                     <option selected disabled value>
                       <small class="text-muted">Estado</small>
                     </option>
-                    <option
-                      v-for="(state, index) in statusList"
-                      :key="index"
-                      :value="state.value"
-                    >
+                    <option v-for="(state, index) in statusList" :key="index" :value="state.value">
                       <small class="text-muted" v-text="state.label"></small>
                     </option>
                   </select>
@@ -191,14 +169,14 @@
               </tr>
               <tr class="text-left">
                 <th class="d-none d-sm-table-cell align-bottom align-sm-middle">
-                  <b>(<span class="text-danger">*</span>)</b>
+                  <b>
+                    (
+                    <span class="text-danger">*</span>)
+                  </b>
                   Imagen:
                 </th>
                 <td>
-                  <div
-                    class="custom-file"
-                    v-if="fillProducts.productImageName == 'nofound.png'"
-                  >
+                  <div class="custom-file" v-if="fillProducts.productImageName == 'nofound.png'">
                     <input
                       type="file"
                       class="custom-file-input form-control-sm border-0 border-bottom"
@@ -213,24 +191,21 @@
                     ></label>
                   </div>
                   <div v-else class="text-center">
-                    <button
-                      class="btn btn-danger text-white rounded-pill w-25"
-                      @click="clearImage"
-                    >
+                    <button class="btn btn-danger text-white rounded-pill w-25" @click="clearImage">
                       <i class="fas fa-trash"></i>
                     </button>
                   </div>
                 </td>
               </tr>
-
               <tr>
                 <td class="d-none d-sm-table-cell"></td>
                 <td>
                   <p class="text-danger">
-                    **<small>
+                    **
+                    <small>
                       Las dimensiones de la imagen deben ser cuadradas. (ejmp
-                      500px x 500px)</small
-                    >
+                      500px x 500px)
+                    </small>
                   </p>
                 </td>
               </tr>
@@ -243,10 +218,7 @@
                     <span class="fas fa-arrow-left"></span>
                     Atras
                   </router-link>
-                  <button
-                    class="btn btn-sm btn-primary"
-                    @click.prevent="setProduct"
-                  >
+                  <button class="btn btn-sm btn-primary" @click.prevent="setProduct">
                     <span class="fas fa-check"></span>
                     Actualizar
                   </button>
@@ -260,7 +232,6 @@
     </div>
   </section>
 </template>
-
 <script>
 export default {
   props: ["id"],
@@ -321,10 +292,6 @@ export default {
         .catch((error) => {
           //no estas autenticado
           if (error.response.status == 401) {
-            // this.app.Toastr.error("Caduco su Sesión");
-            // localStorage.removeItem("user-authenticate");
-            // this.$router.push("/login");
-            console.log(error.response.status);
           }
         });
     },
@@ -343,10 +310,6 @@ export default {
         .catch((error) => {
           //no estas autenticado
           if (error.response.status == 401) {
-            // this.app.Toastr.error("Caduco su Sesión");
-            // localStorage.removeItem("user-authenticate");
-            // this.$router.push("/login");
-            console.log(error.response.status);
           }
         });
     },
@@ -481,7 +444,6 @@ export default {
   },
 };
 </script>
-
 <style>
 .textarea {
   resize: none;
@@ -489,7 +451,6 @@ export default {
 .select {
   height: 1.4rem;
 }
-
 .delete-icon-box {
   top: 0;
   right: 0;

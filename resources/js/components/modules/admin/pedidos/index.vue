@@ -17,19 +17,14 @@
           :value="state.value"
         ></el-option>
       </el-select>
-      <el-input
-        placeholder="Buscar por Orden"
-        v-model="orderSearch"
-        :class="'buscarpedido'"
-      ></el-input>
+      <el-input placeholder="Buscar por Orden" v-model="orderSearch" :class="'buscarpedido'"></el-input>
       <el-button
         type="primary"
         icon="el-icon-search"
         size="mini"
         round
         @click="getAllOrders"
-        >Buscar / Reiniciar</el-button
-      >
+      >Buscar / Reiniciar</el-button>
     </div>
     <template v-if="orderList.length">
       <div class="col-12 d-flex flex-wrap">
@@ -40,44 +35,16 @@
         >
           <div class="card h-100">
             <div class="card-header">
-              <el-link
-                type="primary"
-                v-text="order.number"
-                class="font-weight-bolder"
-              ></el-link>
+              <el-link type="primary" v-text="order.number" class="font-weight-bolder"></el-link>
             </div>
             <div class="card-body">
               <div class="card-title">
-                <label
-                  v-if="order.status == 1"
-                  class="badge badge-danger"
-                  v-text="order.estado"
-                ></label>
-                <label
-                  v-if="order.status == 2"
-                  class="badge badge-primary"
-                  v-text="order.estado"
-                ></label>
-                <label
-                  v-if="order.status == 3"
-                  class="badge badge-warning"
-                  v-text="order.estado"
-                ></label>
-                <label
-                  v-if="order.status == 4"
-                  class="badge badge-success"
-                  v-text="order.estado"
-                ></label>
-                <label
-                  v-if="order.status == 5"
-                  class="badge badge-default"
-                  v-text="order.estado"
-                ></label>
-                <label
-                  v-if="order.status == 6"
-                  class="badge badge-danger"
-                  v-text="order.estado"
-                ></label>
+                <label v-if="order.status == 1" class="badge badge-danger" v-text="order.estado"></label>
+                <label v-if="order.status == 2" class="badge badge-primary" v-text="order.estado"></label>
+                <label v-if="order.status == 3" class="badge badge-warning" v-text="order.estado"></label>
+                <label v-if="order.status == 4" class="badge badge-success" v-text="order.estado"></label>
+                <label v-if="order.status == 5" class="badge badge-default" v-text="order.estado"></label>
+                <label v-if="order.status == 6" class="badge badge-danger" v-text="order.estado"></label>
               </div>
               <div>
                 <p class="text-muted m-0">
@@ -109,20 +76,14 @@
                   <span v-text="order.transaccion"></span>
                 </p>
                 <p class="text-muted m-0">
-                  <span class="font-weight-bolder"
-                    >¿Acepta que le notifiquen?:</span
-                  >
-                  <span
-                    v-text="order.dataClient[0].notificacion ? 'Si' : 'No'"
-                  ></span>
+                  <span class="font-weight-bolder">¿Acepta que le notifiquen?:</span>
+                  <span v-text="order.dataClient[0].notificacion ? 'Si' : 'No'"></span>
                 </p>
               </div>
             </div>
             <div class="card-footer d-flex px-0 justify-content-around">
               <a :href="order.link" target="_blank" class="col-6 text-center">
-                <el-button icon="el-icon-view" type="primary" round size="mini"
-                  >Ver</el-button
-                >
+                <el-button icon="el-icon-view" type="primary" round size="mini">Ver</el-button>
               </a>
               <el-button
                 type="danger"
@@ -143,8 +104,7 @@
                   round
                   size="mini"
                   :disabled="order.status == 5"
-                  >Cambiar</el-button
-                >
+                >Cambiar</el-button>
               </a>
             </div>
           </div>
@@ -161,8 +121,7 @@
                 tabindex="-1"
                 aria-disabled="true"
                 @click.prevent="prevPage"
-                >Previous</a
-              >
+              >Previous</a>
             </li>
             <li
               class="page-item"
@@ -170,9 +129,11 @@
               :key="index"
               :class="page == pageNumber ? ' active' : ''"
             >
-              <a class="page-link" href="#" @click.prevent="selectPage(page)">{{
+              <a class="page-link" href="#" @click.prevent="selectPage(page)">
+                {{
                 page + 1
-              }}</a>
+                }}
+              </a>
             </li>
             <li class="page-item" v-if="pageNumber < pageCount - 1">
               <a class="page-link" href="#" @click.prevent="nextPage">Next</a>
@@ -193,11 +154,7 @@
       :class="'col-12 col-sm-6 col-md-4 m-auto'"
     >
       <div>
-        <div
-          class="form-check"
-          v-for="(estado, index) in orderStates"
-          :key="index"
-        >
+        <div class="form-check" v-for="(estado, index) in orderStates" :key="index">
           <div class="col-12 py-1">
             <input
               class="form-check-input"
@@ -223,8 +180,7 @@
           type="primary"
           @click="(dialogVisible = false), setNewState(currentOrder)"
           v-loading.fullscreen.lock="fullscreenLoading"
-          >Confirm</el-button
-        >
+        >Confirm</el-button>
       </span>
     </el-dialog>
   </section>
@@ -285,9 +241,7 @@ export default {
         estado: this.currentStatus,
       };
       axios.put(`/orders/${id}`, params).then((response) => {
-        // console.log(response.data);
         if (response.status == 200) {
-          //   console.log(response.data);
           location.reload();
         }
         this.fullscreenLoading = false;

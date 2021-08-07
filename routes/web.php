@@ -48,6 +48,7 @@ Route::get('/orders/info', 'OrdersController@info');
 Route::get('/orders/filtered/{filter}', 'OrdersController@filter');
 Route::get('/admin/customerByOrder/{id}', 'OrdersController@customerByOrder');
 Route::get('/miorden/{token}', 'OrdersController@pedido');
+Route::get('/miorden/yappy/{token}', 'OrdersController@pedidoyappy');
 Route::resource('/orders', 'OrdersController');
 
 // types routes
@@ -116,6 +117,10 @@ Route::resource('/admin/epayco', 'EpaycoController');
 
 //Paguelo Facil
 Route::resource('/admin/paguelofacil', 'PaguelofacilController');
+
+//Yappy
+Route::resource('/admin/yappy', 'YappyController');
+Route::post('/admin/yappy/Verify', 'YappyController@verify');
 
 Route::get('/admin/{option?}', function () {
     return view('admin');

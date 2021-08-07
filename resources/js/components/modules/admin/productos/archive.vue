@@ -4,24 +4,23 @@
       <h2 class="m-0 admin-title">Lote de Productos</h2>
       <hr class="mt-0" />
       <!-- Form -->
-      <section
-        class="col-12 d-flex row flex-column flex-sm-row m-auto px-0 px-sm-2"
-      >
+      <section class="col-12 d-flex row flex-column flex-sm-row m-auto px-0 px-sm-2">
         <div class="col-12">
           <p class="text-justify m-0">
-            <code
-              >Para cargar un lote de productos deber&aacute; cargar un archivo
-              en formato <b>xlsx.</b></code
-            >
+            <code>
+              Para cargar un lote de productos deber&aacute; cargar un archivo
+              en formato
+              <b>xlsx.</b>
+            </code>
           </p>
           <p class="text-justify m-0">
-            <code>Las Categorías deberán estar previamente creadas </code>
+            <code>Las Categorías deberán estar previamente creadas</code>
           </p>
           <p class="text-justify m-0">
-            <code
-              >Este archivo deber&aacute; cumplir con las siguientes
-              condiciones.</code
-            >
+            <code>
+              Este archivo deber&aacute; cumplir con las siguientes
+              condiciones.
+            </code>
           </p>
           <ul>
             <li>
@@ -33,38 +32,42 @@
             <li>
               Las siguientes columnas en el orden mostrado:
               <ol>
-                <li><small>nombre: puede ser alfanumérico</small></li>
                 <li>
-                  <small
-                    >descripcion (alfanumérico no mayor a 255 caracteres)</small
-                  >
-                </li>
-                <li><small>descripcion2 (Descripcion Larga)</small></li>
-                <li>
-                  <small
-                    >estado: debe ser numérico (1 activo, 2 inactivo)</small
-                  >
+                  <small>nombre: puede ser alfanumérico</small>
                 </li>
                 <li>
-                  <small
-                    >categor&iacute;a: el nombre debe ser exacto a la categoría
-                    creada</small
-                  >
+                  <small>descripcion (alfanumérico no mayor a 255 caracteres)</small>
                 </li>
-                <li><small>cantidad: (0 por defecto)</small></li>
                 <li>
-                  <small
-                    >precio: Sin separadores de mil y decimales separados por
-                    punto</small
-                  >
+                  <small>descripcion2 (Descripcion Larga)</small>
+                </li>
+                <li>
+                  <small>estado: debe ser numérico (1 activo, 2 inactivo)</small>
+                </li>
+                <li>
+                  <small>
+                    categor&iacute;a: el nombre debe ser exacto a la categoría
+                    creada
+                  </small>
+                </li>
+                <li>
+                  <small>cantidad: (0 por defecto)</small>
+                </li>
+                <li>
+                  <small>
+                    precio: Sin separadores de mil y decimales separados por
+                    punto
+                  </small>
                 </li>
               </ol>
             </li>
             <li>
               Para mayor facilidad y menos molestias utilice descargue
-              <a href="#" target="_blank" @click.prevent="downloadFile"
-                >Aqu&iacute;</a
-              >
+              <a
+                href="#"
+                target="_blank"
+                @click.prevent="downloadFile"
+              >Aqu&iacute;</a>
               un archivo de ejemplo para llenarlo.
             </li>
           </ul>
@@ -73,14 +76,12 @@
           <table class="table table-sm">
             <tbody>
               <tr class="text-left">
-                <th class="d-none d-sm-table-cell align-bottom align-sm-middle">
-                  Archivo:
-                </th>
+                <th class="d-none d-sm-table-cell align-bottom align-sm-middle">Archivo:</th>
                 <td>
-                  <div class="">
+                  <div class>
                     <div class="fileform">
-                      <label class="filebutton" style="margin: 0"
-                        ><i class="fas fa-download"></i>
+                      <label class="filebutton" style="margin: 0">
+                        <i class="fas fa-download"></i>
                         <input
                           class="fileinput"
                           ref="fileupload"
@@ -128,7 +129,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="" v-for="(item, index) in record" :key="index">
+              <tr class v-for="(item, index) in record" :key="index">
                 <td>{{ item.nombre.slice(0, 30) + "..." }}</td>
                 <td>{{ item.descripcion.slice(0, 30) + "..." }}</td>
                 <td class="text-center">{{ item.estado }}</td>
@@ -142,25 +143,17 @@
       </section>
       <!-- End Form -->
     </div>
-    <el-dialog
-      title="Aviso"
-      :visible.sync="dialogVisible"
-      width="40%"
-      :before-close="handleClose"
-    >
+    <el-dialog title="Aviso" :visible.sync="dialogVisible" width="40%" :before-close="handleClose">
       <p>
         Tenga en cuenta que los productos con nombre repetido no se generarán,
         al igual que los productos cuyas categor&iacute;as no existan.
       </p>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="dialogVisible = false"
-          >Confirm</el-button
-        >
+        <el-button type="primary" @click="dialogVisible = false">Confirm</el-button>
       </span>
     </el-dialog>
   </section>
 </template>
-
 <script>
 import XLSX from "xlsx";
 export default {
@@ -260,7 +253,6 @@ export default {
     pushFile() {
       this.fullscreenLoading = true;
       let url = "/products/pushFile";
-      console.log(this.record);
       axios
         .post(url, { param: this.record })
         .then((response) => {
@@ -305,7 +297,6 @@ export default {
   },
 };
 </script>
-
 <style>
 ul {
   padding-left: 10px;
