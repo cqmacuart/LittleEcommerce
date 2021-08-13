@@ -1,4 +1,3 @@
-/vendor/
 node_modules/
 npm-debug.log
 yarn-error.log
@@ -21,3 +20,9 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+
+/public/img/products/*
+/public/img/categories/*
+/public/img/settings/*
+/public/files/fb_business/facebook_business_product_csv.csv
+.env.backup
